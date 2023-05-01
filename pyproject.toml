@@ -1,0 +1,28 @@
+[tool.pytest.ini_options]
+addopts   = ["--import-mode=importlib"]
+testpaths = ["tests", "src"]
+# pythonpath = ["src"]
+
+[tool.ruff]
+src = ["src"]
+select = [
+  "E",  # pycodestyle
+  "F",  # pyflakes
+  "UP", # pyupgrade
+  "I",  # isort
+  "D",  # pydocstyle
+]
+
+[tool.ruff.isort]
+force-single-line          = true
+force-sort-within-sections = true
+force-to-top               = true
+# multi-line-output          = 3
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.pyright]
+venvPath = "."
+venv     = ".venv"
+exclude  = ["./.venv"]
