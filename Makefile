@@ -23,9 +23,9 @@ clean_venv:
 	@rm -fr $(VENV)
 
 clean_caches:
-	fd --no-ignore --hidden --type d __pycache__ $(PWD) -x rm -fr {}
-	fd --no-ignore --hidden --type d \.pycache $(PWD) -x rm -fr {}
-	fd --no-ignore --hidden --type d \.pytest_cache $(PWD) -x rm -fr {}
+	@fd --no-ignore --hidden --type d __pycache__ $(PWD) -x rm -fr {}
+	@fd --no-ignore --hidden --type d \.pycache $(PWD) -x rm -fr {}
+	@fd --no-ignore --hidden --type d \.pytest_cache $(PWD) -x rm -fr {}
 
 clean: clean_caches
 
