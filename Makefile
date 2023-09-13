@@ -5,7 +5,6 @@ MAKEFLAGS				+= --no-builtin-rules
 WORKTREE_ROOT			!= git rev-parse --show-toplevel 2> /dev/null
 PROJECT_NAME			:= djskel
 VENV					:= .venv
-PWD						:= $(shell pwd)
 SYS_PYTHON				:= $(shell which python)
 PYTHON					:= $(VENV)/bin/python3
 PIP						:= $(VENV)/bin/pip3
