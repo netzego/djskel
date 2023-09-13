@@ -62,12 +62,7 @@ src:
 	mkdir -p $(PWD)/src
 
 # aliases
-init: venv pip_install
-install: pip_install
-upgrade: pip_upgrade pip_freeze
-serve: django_runserver
-# test: pytest
-# watch: pytest_watch
+init: venv install_packages
 
 .PHONY: \
 	clean \
