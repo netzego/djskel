@@ -70,6 +70,8 @@ init: venv install_packages
 
 .PHONY: \
 	clean \
+	clean_caches \
+	clean_venv \
 	distclean \
 	django_runserver \
 	django_startproject \
