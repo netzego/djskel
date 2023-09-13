@@ -19,6 +19,9 @@ DJANGO_ADMIN			:= $(VENV)/bin/django-admin
 DJANGO_ADDR				:= localhost
 DJANGO_PORT				:= 8000
 
+clean_venv:
+	@rm -fr $(VENV)
+
 clean_caches:
 	fd --no-ignore --hidden --type d __pycache__ $(PWD) -x rm -fr {}
 	fd --no-ignore --hidden --type d \.pycache $(PWD) -x rm -fr {}
