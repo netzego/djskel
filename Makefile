@@ -10,6 +10,7 @@ REQ_TXT					:= requirements.txt
 SYS_PYTHON				:= $(shell which python)
 PYTHON					:= $(VENV)/bin/python3
 PIP						:= $(VENV)/bin/pip3
+PIP_OPTIONS				:= --disable-pip-version-check --no-color --isolated
 PYTEST					:= $(VENV)/bin/pytest
 PYTEST_DOCTEST_OPTIONS	:= --doctest-modules
 PYTEST_OPTIONS			:= --verbose $(PYTEST_DOCTEST_OPTIONS)
