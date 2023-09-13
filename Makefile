@@ -2,6 +2,7 @@ SHELL					:= bash
 .SHELLFLAGS				:= -eu -o pipefail -c
 MAKEFLAGS				+= --warn-undefined-variables
 MAKEFLAGS				+= --no-builtin-rules
+WORKTREE_ROOT			!= git rev-parse --show-toplevel 2> /dev/null
 PROJECT_NAME			:= djskel
 VENV					:= .venv
 PWD						:= $(shell pwd)
