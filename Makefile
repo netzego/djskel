@@ -27,8 +27,10 @@ clean: clean_caches
 distclean: clean
 	fd --no-ignore --hidden --type d \\$(VENV) $(PWD) -x rm -fr {}
 
-venv:
+$(VENV)/pyvenv.cfg:
 	$(SYS_PYTHON) -m venv $(VENV)
+
+venv: $(VENV)/pyvenv.cfg
 
 pip_install:
 	$(PIP) install -r requirements.txt
