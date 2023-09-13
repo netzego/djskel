@@ -33,6 +33,9 @@ $(VENV)/pyvenv.cfg:
 
 venv: $(VENV)/pyvenv.cfg
 
+install_packages: $(REQ_IN) |$(VENV)
+	@$(PIP) $(PIP_OPTIONS) install -r $<
+
 pip_install:
 	$(PIP) install -r requirements.txt
 
