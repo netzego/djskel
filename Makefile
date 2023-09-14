@@ -51,7 +51,7 @@ $(REQ_TXT): .FORCE $(REQ_IN) |$(VENV_DIR)
 		--requirement $(REQ_IN) \
 		| tee $(REQ_TXT)
 
-venv: $(VENV_DIR)/pyvenv.cfg
+freeze: $(REQ_TXT)
 
 install_packages: $(REQ_IN) |$(VENV_DIR)
 	@$(PIP) $(PIP_OPTIONS) install -r $<
