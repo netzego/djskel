@@ -36,7 +36,7 @@ distclean: clean
 $(DJANGO_ROOT):
 	@mkdir -p $@
 
-$(VENV_DIR)/pyvenv.cfg: |src
+$(VENV_DIR)/pyvenv.cfg: |$(DJANGO_ROOT)
 	$(SYS_PYTHON) -m venv $(VENV_DIR)
 
 $(REQ_IN):
@@ -63,11 +63,11 @@ pip_freeze:
 pip_upgrade:
 	$(PIP) install -r requirements.txt --upgrade
 
-django_startproject: |src
-	$(DJANGO_ADMIN) startproject config $(WORKTREE_ROOT)/src
+django_startproject: |$(DJANGO_ROOT)
+	$(DJANGO_ADMIN) startproject config $(WORKTREE_ROOT)/$(DJANGO_ROOT)
 
 django_runserver: 
-	$(PYTHON) $(PWD)/src/manage.py runserver $(DJANGO_ADDR):$(DJANGO_PORT)
+	$(PYTHON) $(WORKTREE_ROOT)/$(DJANGO_ROOT)/manage.py runserver $(DJANGO_ADDR):$(DJANGO_PORT)
 
 # pytest:
 # 	$(PYTEST) $(PYTEST_OPTIONS)
