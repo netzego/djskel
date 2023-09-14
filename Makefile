@@ -38,6 +38,13 @@ src:
 $(VENV)/pyvenv.cfg: |src
 	$(SYS_PYTHON) -m venv $(VENV)
 
+$(REQ_TXT): .FORCE $(REQ_IN) |$(VENV_DIR)
+	@$(PIP) $(PIP_OPTIONS) freeze \
+		--local \
+		--exclude-editable \
+		--requirement $(REQ_IN) \
+		| tee $(REQ_TXT)
+
 venv: $(VENV)/pyvenv.cfg
 
 install_packages: $(REQ_IN) |$(VENV)
