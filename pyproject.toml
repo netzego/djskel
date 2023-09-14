@@ -1,7 +1,6 @@
-[tool.pytest.ini_options]
-addopts   = ["--import-mode=importlib"]
-testpaths = ["tests", "src"]
-# pythonpath = ["src"]
+[project]
+name    = "djksel"
+version = "0.0.0"
 
 [tool.pyright]
 venvPath = "."
