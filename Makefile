@@ -31,7 +31,8 @@ clean_caches:
 clean: clean_venv clean_caches
 
 distclean: clean
-	fd --no-ignore --hidden --type d \\$(VENV_DIR) $(PWD) -x rm -fr {}
+	@rm -f $(REQ_TXT)
+	@rm -fr $(DJANGO_ROOT)
 
 $(DJANGO_ROOT):
 	@mkdir -p $@
@@ -64,6 +65,10 @@ django_runserver:
 
 serve: django_runserver
 
+watch_surf:
+	surf http://$(DJANGO_ADDR):$(DJANGO_PORT)/ &> /dev/null &
+	fd -t f . src/ | entr -r kill -s HUP $$(pgrep surf)
+
 # pytest:
 # 	$(PYTEST) $(PYTEST_OPTIONS)
 #
@@ -73,7 +78,7 @@ serve: django_runserver
 .FORCE:
 
 # aliases
-init: venv install_packages
+init: venv install_packages django_startproject
 
 .PHONY: \
 	clean \
