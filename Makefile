@@ -31,8 +31,8 @@ clean_caches:
 clean: clean_venv clean_caches
 
 distclean: clean
-	@rm -f $(REQ_TXT)
 	@rm -fr $(DJANGO_ROOT)
+	@rm -fr $(REQ_TXT)
 
 $(DJANGO_ROOT):
 	@mkdir -p $@
