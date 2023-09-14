@@ -52,6 +52,8 @@ pip_upgrade:
 src:
 	@mkdir -p src
 
+django_startproject: |src
+	$(DJANGO_ADMIN) startproject config $(WORKTREE_ROOT)/src
 
 django_runserver: 
 	$(PYTHON) $(PWD)/src/manage.py runserver $(DJANGO_ADDR):$(DJANGO_PORT)
