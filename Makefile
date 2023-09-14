@@ -49,8 +49,9 @@ pip_freeze:
 pip_upgrade:
 	$(PIP) install -r requirements.txt --upgrade
 
-django_startproject: src
-	$(DJANGO_ADMIN) startproject $(PROJECT_NAME) $(PWD)/src
+src:
+	@mkdir -p src
+
 
 django_runserver: 
 	$(PYTHON) $(PWD)/src/manage.py runserver $(DJANGO_ADDR):$(DJANGO_PORT)
