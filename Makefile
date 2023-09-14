@@ -39,6 +39,8 @@ $(DJANGO_ROOT):
 $(VENV_DIR)/pyvenv.cfg: |$(DJANGO_ROOT)
 	$(SYS_PYTHON) -m venv $(VENV_DIR)
 
+venv: $(VENV_DIR)/pyvenv.cfg
+
 $(REQ_IN):
 	@touch $(REQ_IN)
 
