@@ -38,7 +38,7 @@ $(DJANGO_ROOT):
 	@mkdir -p $@
 
 $(VENV_DIR)/pyvenv.cfg: |$(DJANGO_ROOT)
-	$(SYS_PYTHON) -m venv $(VENV_DIR)
+	@$(SYS_PYTHON) -m venv $(VENV_DIR)
 
 venv: $(VENV_DIR)/pyvenv.cfg
 
