@@ -54,15 +54,6 @@ venv: $(VENV_DIR)/pyvenv.cfg
 install_packages: $(REQ_IN) |$(VENV_DIR)
 	@$(PIP) $(PIP_OPTIONS) install -r $<
 
-pip_install:
-	$(PIP) install -r requirements.txt
-
-pip_freeze:
-	$(PIP) freeze > requirements.txt
-
-pip_upgrade:
-	$(PIP) install -r requirements.txt --upgrade
-
 django_startproject: |$(DJANGO_ROOT)
 	$(DJANGO_ADMIN) startproject config $(WORKTREE_ROOT)/$(DJANGO_ROOT)
 
