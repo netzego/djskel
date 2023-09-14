@@ -38,6 +38,9 @@ src:
 $(VENV_DIR)/pyvenv.cfg: |src
 	$(SYS_PYTHON) -m venv $(VENV_DIR)
 
+$(REQ_IN):
+	@touch $(REQ_IN)
+
 $(REQ_TXT): .FORCE $(REQ_IN) |$(VENV_DIR)
 	@$(PIP) $(PIP_OPTIONS) freeze \
 		--local \
