@@ -35,6 +35,7 @@ distclean: clean
 src:
 	@mkdir -p src
 
+$(VENV)/pyvenv.cfg: |src
 	$(SYS_PYTHON) -m venv $(VENV)
 
 venv: $(VENV)/pyvenv.cfg
