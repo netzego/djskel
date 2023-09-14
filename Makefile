@@ -52,9 +52,6 @@ pip_freeze:
 pip_upgrade:
 	$(PIP) install -r requirements.txt --upgrade
 
-src:
-	@mkdir -p src
-
 django_startproject: |src
 	$(DJANGO_ADMIN) startproject config $(WORKTREE_ROOT)/src
 
