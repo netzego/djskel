@@ -75,9 +75,7 @@ django_runserver:
 # pytest_watch:
 # 	fd --type f \.py$$ | entr -c $(PYTEST) $(PYTEST_WATCH_OPTIONS)
 
-# files
-src:
-	mkdir -p $(PWD)/src
+.FORCE:
 
 # aliases
 init: venv install_packages
