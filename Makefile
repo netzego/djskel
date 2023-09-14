@@ -17,7 +17,7 @@ PYTEST_OPTIONS			:= --verbose $(PYTEST_DOCTEST_OPTIONS)
 PYTEST_WATCH_OPTIONS	:= --verbose $(PYTEST_DOCTEST_OPTIONS)
 DJANGO_ADMIN			:= $(VENV)/bin/django-admin
 DJANGO_ADDR				:= localhost
-DJANGO_PORT				:= 8000
+DJANGO_PORT				:= 8123
 
 clean_venv:
 	@rm -fr $(VENV)
