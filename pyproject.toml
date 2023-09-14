@@ -3,6 +3,11 @@ addopts   = ["--import-mode=importlib"]
 testpaths = ["tests", "src"]
 # pythonpath = ["src"]
 
+[tool.pyright]
+venvPath = "."
+venv     = ".venv"
+exclude  = ["./.venv"]
+
 [tool.ruff]
 src = ["src"]
 select = [
@@ -21,8 +26,3 @@ force-to-top               = true
 
 [tool.ruff.pydocstyle]
 convention = "google"
-
-[tool.pyright]
-venvPath = "."
-venv     = ".venv"
-exclude  = ["./.venv"]
