@@ -32,7 +32,9 @@ clean: clean_venv clean_caches
 distclean: clean
 	fd --no-ignore --hidden --type d \\$(VENV) $(PWD) -x rm -fr {}
 
-$(VENV)/pyvenv.cfg:
+src:
+	@mkdir -p src
+
 	$(SYS_PYTHON) -m venv $(VENV)
 
 venv: $(VENV)/pyvenv.cfg
