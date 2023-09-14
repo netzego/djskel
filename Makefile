@@ -43,7 +43,7 @@ $(VENV_DIR)/pyvenv.cfg: |$(DJANGO_ROOT)
 venv: $(VENV_DIR)/pyvenv.cfg
 
 $(REQ_IN):
-	@touch $(REQ_IN)
+	@touch $@
 
 $(REQ_TXT): .FORCE $(REQ_IN) |$(VENV_DIR)
 	@$(PIP) $(PIP_OPTIONS) freeze \
