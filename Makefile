@@ -88,15 +88,8 @@ init: venv install_packages django_startproject
 	django_runserver \
 	django_startproject \
 	init \
-	install \
-	pip_freeze \
-	pip_install \
-	pip_upgrade \
-	pytest \
-	pytest_watch \
 	serve \
 	test \
-	upgrade \
 	venv \
 
 .DEFAULT_GOAL := init
