@@ -4,23 +4,23 @@ MAKEFLAGS				+= --warn-undefined-variables
 MAKEFLAGS				+= --no-builtin-rules
 WORKTREE_ROOT			!= git rev-parse --show-toplevel 2> /dev/null
 PROJECT_NAME			:= djskel
-VENV					:= .venv
+VENV_DIR				:= .venv
 REQ_IN					:= requirements.in
 REQ_TXT					:= requirements.txt
-SYS_PYTHON				!= which --all python | grep -v -F $(VENV)
-PYTHON					:= $(VENV)/bin/python
-PIP						:= $(VENV)/bin/pip3
+SYS_PYTHON				!= which --all python | grep -v -F $(VENV_DIR)
+PYTHON					:= $(VENV_DIR)/bin/python
+PIP						:= $(VENV_DIR)/bin/pip3
 PIP_OPTIONS				:= --disable-pip-version-check --no-color --isolated
-PYTEST					:= $(VENV)/bin/pytest
+PYTEST					:= $(VENV_DIR)/bin/pytest
 PYTEST_DOCTEST_OPTIONS	:= --doctest-modules
 PYTEST_OPTIONS			:= --verbose $(PYTEST_DOCTEST_OPTIONS)
 PYTEST_WATCH_OPTIONS	:= --verbose $(PYTEST_DOCTEST_OPTIONS)
-DJANGO_ADMIN			:= $(VENV)/bin/django-admin
+DJANGO_ADMIN			:= $(VENV_DIR)/bin/django-admin
 DJANGO_ADDR				:= localhost
 DJANGO_PORT				:= 8123
 
 clean_venv:
-	@rm -fr $(VENV)
+	@rm -fr $(VENV_DIR)
 
 clean_caches:
 	@fd --no-ignore --hidden --type d __pycache__ $(PWD) -x rm -fr {}
@@ -30,13 +30,13 @@ clean_caches:
 clean: clean_venv clean_caches
 
 distclean: clean
-	fd --no-ignore --hidden --type d \\$(VENV) $(PWD) -x rm -fr {}
+	fd --no-ignore --hidden --type d \\$(VENV_DIR) $(PWD) -x rm -fr {}
 
 src:
 	@mkdir -p src
 
-$(VENV)/pyvenv.cfg: |src
-	$(SYS_PYTHON) -m venv $(VENV)
+$(VENV_DIR)/pyvenv.cfg: |src
+	$(SYS_PYTHON) -m venv $(VENV_DIR)
 
 $(REQ_TXT): .FORCE $(REQ_IN) |$(VENV_DIR)
 	@$(PIP) $(PIP_OPTIONS) freeze \
@@ -45,9 +45,9 @@ $(REQ_TXT): .FORCE $(REQ_IN) |$(VENV_DIR)
 		--requirement $(REQ_IN) \
 		| tee $(REQ_TXT)
 
-venv: $(VENV)/pyvenv.cfg
+venv: $(VENV_DIR)/pyvenv.cfg
 
-install_packages: $(REQ_IN) |$(VENV)
+install_packages: $(REQ_IN) |$(VENV_DIR)
 	@$(PIP) $(PIP_OPTIONS) install -r $<
 
 pip_install:
