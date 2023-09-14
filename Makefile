@@ -8,7 +8,7 @@ VENV					:= .venv
 REQ_IN					:= requirements.in
 REQ_TXT					:= requirements.txt
 SYS_PYTHON				!= which --all python | grep -v -F $(VENV_DIR)
-PYTHON					:= $(VENV_DIR)/bin/python
+PYTHON					:= $(VENV)/bin/python
 PIP						:= $(VENV)/bin/pip3
 PIP_OPTIONS				:= --disable-pip-version-check --no-color --isolated
 PYTEST					:= $(VENV)/bin/pytest
@@ -90,4 +90,4 @@ init: venv install_packages
 	upgrade \
 	venv \
 
-.DEFAULT_GOAL := pytest
+.DEFAULT_GOAL := init
