@@ -69,9 +69,9 @@ watch_surf:
 	surf http://$(DJANGO_ADDR):$(DJANGO_PORT)/ &> /dev/null &
 	fd -t f . src/ | entr -r kill -s HUP $$(pgrep surf)
 
-# pytest:
-# 	$(PYTEST) $(PYTEST_OPTIONS)
-#
+test:
+	$(PYTEST) $(PYTEST_OPTIONS)
+
 # pytest_watch:
 # 	fd --type f \.py$$ | entr -c $(PYTEST) $(PYTEST_WATCH_OPTIONS)
 
