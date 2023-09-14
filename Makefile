@@ -62,6 +62,8 @@ django_startproject: |$(DJANGO_ROOT)
 django_runserver: 
 	$(PYTHON) $(WORKTREE_ROOT)/$(DJANGO_ROOT)/manage.py runserver $(DJANGO_ADDR):$(DJANGO_PORT)
 
+serve: django_runserver
+
 # pytest:
 # 	$(PYTEST) $(PYTEST_OPTIONS)
 #
