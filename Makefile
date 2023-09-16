@@ -12,9 +12,7 @@ PYTHON					:= $(VENV_DIR)/bin/python
 PIP						:= $(VENV_DIR)/bin/pip3
 PIP_OPTIONS				:= --disable-pip-version-check --no-color --isolated
 PYTEST					:= $(VENV_DIR)/bin/pytest
-PYTEST_DOCTEST_OPTIONS	:= --doctest-modules
-PYTEST_OPTIONS			:= --verbose $(PYTEST_DOCTEST_OPTIONS)
-PYTEST_WATCH_OPTIONS	:= --verbose $(PYTEST_DOCTEST_OPTIONS)
+PYTEST_OPTIONS			:= --verbose
 DJANGO_ADMIN			:= $(VENV_DIR)/bin/django-admin
 DJANGO_ADDR				:= localhost
 DJANGO_PORT				:= 8123
@@ -65,7 +63,7 @@ django_runserver:
 
 serve: django_runserver
 
-watch_surf:
+view:
 	surf http://$(DJANGO_ADDR):$(DJANGO_PORT)/ &> /dev/null &
 	fd -t f . src/ | entr -r kill -s HUP $$(pgrep surf)
 
