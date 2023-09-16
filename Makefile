@@ -92,5 +92,7 @@ init: venv install_packages django_startproject
 	serve \
 	test \
 	venv \
+	watch \
+	view \
 
 .DEFAULT_GOAL := init
