@@ -17,6 +17,7 @@ DJANGO_ADMIN			:= $(VENV_DIR)/bin/django-admin
 DJANGO_ADDR				:= localhost
 DJANGO_PORT				:= 8123
 DJANGO_ROOT				:= src
+WAIT					:= 1.7s
 
 clean_venv:
 	@rm -fr $(VENV_DIR)
@@ -65,7 +66,9 @@ serve: django_runserver
 
 view:
 	surf http://$(DJANGO_ADDR):$(DJANGO_PORT)/ &> /dev/null &
-	fd -t f . src/ | entr -r kill -s HUP $$(pgrep surf)
+
+watch:
+	fd -t f . src/ | entr -s "sleep $(WAIT); kill -s HUP $$(pgrep surf)"
 
 test:
 	$(PYTEST) $(PYTEST_OPTIONS)
