@@ -73,8 +73,8 @@ watch:
 test:
 	$(PYTEST) $(PYTEST_OPTIONS)
 
-# pytest_watch:
-# 	fd --type f \.py$$ | entr -c $(PYTEST) $(PYTEST_WATCH_OPTIONS)
+watch_test:
+	fd --type f \.py$$ | entr -c $(PYTEST) $(PYTEST_WATCH_OPTIONS)
 
 .FORCE:
 
